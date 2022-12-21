@@ -8,13 +8,14 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(nav_msgs REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
 
 set(srv_files
   "srv/LoadMap.srv"
 )
 
 rosidl_generate_interfaces(${PROJECT_NAME}
-  ${srv_files}
+  ${srv_files} DEPENDENCIES nav_msgs std_msgs
 )
 
 ament_export_dependencies(rosidl_default_runtime)
